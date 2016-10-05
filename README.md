@@ -1,5 +1,8 @@
 # How do I use this?
 
+ These are general instructions for if you have an FTDI cable. I don't, so I used my
+ Raspberry Pi to set the ESP8266 Huzzah up. See the bottom for instructions on that.
+ 
  1. First, install the Arduino IDE and configure it to use the ESP8266 repository.
 
  Since other documentation explains how to do this better, here is a link to the
@@ -26,6 +29,29 @@
 
  However, if you are connected directly to your ESP8266 Huzzah (or other ESP8266) through
  and FTDI adapter all you need is to select your board and upload as normal.
+
+# Alright, I have the Arduino IDE and libraries setup, what next?
+ If you're able to upload new firmware using the ArduinoOTA library without issue you can
+ now proceed to the next step:
+
+ Open agi-esp8266.ino in your Arduino IDE and configure it. You'll need to setup the WiFi
+ SSID, wifi password and the ArduinoOTA upload password.
+
+ Next, upload the agi-esp8266 sketch to your ESP8266. Make sure you have the correct board
+ selected.
+
+ You'll know it's running if serial monitor in the Arduino IDE indicates it successfully
+ connected to a wireless network.
+
+ Open up the address the ESP8266 reports in serial monitor inside your web browser.
+
+ I'm assuming that you have the DHT22 output connected to pin 13 on the ESP8266. Although
+ you can change this to whatever you'd like.
+
+ Additionally, the TSl2561 should be connected to the i2c SCL/SDA pins on your ESP8266. In my
+ case they were pins 4 and 5. 
+
+ [More to come]
 
 # How do I use a Raspberry Pi to do this?
  Here are the steps I took to get that working:
