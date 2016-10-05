@@ -51,8 +51,39 @@
  Additionally, the TSl2561 should be connected to the i2c SCL/SDA pins on your ESP8266. In my
  case they were pins 4 and 5. 
 
- [More to come]
+ Next up, the logging part with MQTT.
 
+# Logging with mosquitto and some basic command line stuff
+
+ If you have a Raspberry Pi, then use the following command to install mosquitto. An MQTT
+ server.
+
+ sudo apt-get install mosquitto
+
+ Then edit /etc/mosquitto/mosquitto.conf to the configuration you want.
+
+ Finally, run sudo mosquitto -v to run mosquitto with verbose output.
+
+ I've yet to write any software to subscribe and parse data so I'm using these commands for logging:
+ 
+ mosquitto_sub -v -t sensor/temperature | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > temperature &
+
+ mosquitto_sub -v -t sensor/temperature | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > humidity &
+
+ mosquitto_sub -v -t sensor/temperature | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > luminosity &
+
+ They subscribe to "sensor/<sensor>" events being sent to the MQTT server. They output the events to
+ the temperature, humidity and luminosity files with an appended timestamp.
+
+ Example output looks like these:
+ 10/04/16 23:31:40.645 sensor/temperature 20.80
+ 10/04/16 23:31:50.646 sensor/temperature 20.70
+ 10/04/16 23:32:00.650 sensor/temperature 20.70
+ 10/04/16 23:32:10.648 sensor/temperature 20.80
+ 10/04/16 23:32:20.647 sensor/temperature 20.70
+
+ That's it! [More to come]
+ 
 # How do I use a Raspberry Pi to do this?
  Here are the steps I took to get that working:
   - Install Arduino IDE, install ESP8266 library.
