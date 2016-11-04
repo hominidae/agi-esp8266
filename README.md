@@ -68,9 +68,9 @@
  
  mosquitto_sub -v -t sensor/temperature | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > temperature &
 
- mosquitto_sub -v -t sensor/temperature | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > humidity &
+ mosquitto_sub -v -t sensor/humidity | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > humidity &
 
- mosquitto_sub -v -t sensor/temperature | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > luminosity &
+ mosquitto_sub -v -t sensor/luminosity | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > luminosity &
 
  They subscribe to "sensor/<sensor>" events being sent to the MQTT server. They output the events to
  the temperature, humidity and luminosity files with an appended timestamp.
