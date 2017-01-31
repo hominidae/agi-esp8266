@@ -27,13 +27,13 @@ Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 1234
 // Declare a global variables for ArduinoOTA
 #define WLAN_SSID "***" // Put your wifi SSID here
 #define WLAN_PASS "***" // Put your wifi password here
-#define AGIhostname "***" // Change this to whatever you'd like
+#define AGIhostname "agi-esp8266" // Change this to whatever you'd like
 #define OTApass "***" // Change your AndroidOTA pass here
 
 // Declare PubSub variables
-const char* mqtt_user = "***"; // Change to your mqtt username
-const char* mqtt_password = "***"; // Change to your mqtt password
-const char* mqtt_server = "***"; // Change to your MQTT server
+const char* mqtt_user = "mosquitto"; // Change to your mqtt username
+const char* mqtt_password = "mosquitto"; // Change to your mqtt password
+const char* mqtt_server = "192.168.1.1"; // Change to your MQTT server
 const char* humidity_topic = "sensor/humidity";
 const char* temperature_topic = "sensor/temperature";
 const char* luminosity_topic = "sensor/luminosity";
