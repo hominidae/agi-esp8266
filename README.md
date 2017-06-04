@@ -2,7 +2,9 @@
 
  These are general instructions for if you have an FTDI cable. I don't, so I used my
  Raspberry Pi to set the ESP8266 Huzzah up. See the bottom for instructions on that.
- 
+
+# Setup with an FTDI USB cable (esp8266 connected directly to PC)
+
  1. First, install the Arduino IDE and configure it to use the ESP8266 repository.
 
  Since other documentation explains how to do this better, here is a link to the
@@ -12,7 +14,7 @@
 
  2. Next, you're going to need to install the Arduino IDE libraries used:
 
- (Note: Usually, this is your documents directory under Arduino/libraries)
+ (Note: Usually, this is your documents directory within "Arduino/libraries")
 
  These are the libraries you need to install to your Arduino IDE:
 
@@ -30,7 +32,11 @@
  However, if you are connected directly to your ESP8266 Huzzah (or other ESP8266) through
  and FTDI adapter all you need is to select your board and upload as normal.
 
+ The exact connections for connecting to your esp8266 microcontroller will vary with which
+ version of the esp8266 you've picked up.
+
 # Alright, I have the Arduino IDE and libraries setup, what next?
+
  If you're able to upload new firmware using the ArduinoOTA library without issue you can
  now proceed to the next step:
 
@@ -40,23 +46,25 @@
  Next, upload the agi-esp8266 sketch to your ESP8266. Make sure you have the correct board
  selected.
 
- You'll know it's running if serial monitor in the Arduino IDE indicates it successfully
- connected to a wireless network.
+ You'll know it's running if the serial monitor in the Arduino IDE indicates it successfully
+ connected to your wireless network. (You should have configured this in the sourcecode earlier.)
 
- Open up the address the ESP8266 reports in serial monitor inside your web browser.
+ Open up the IP address the ESP8266 reports in serial monitor inside your web browser.
 
  I'm assuming that you have the DHT22 output connected to pin 13 on the ESP8266. Although
- you can change this to whatever you'd like.
+ you can change this to whatever you'd like in the sketch code.
 
  Additionally, the TSl2561 should be connected to the i2c SCL/SDA pins on your ESP8266. In my
- case they were pins 4 and 5. 
+ case they were pins 4 and 5.
 
- Next up, the logging part with MQTT.
+ Next up, we'll setup the logging part with MQTT.
 
 # Logging with mosquitto and some basic command line stuff
 
- If you have a Raspberry Pi, then use the following command to install mosquitto. An MQTT
- server.
+ If you have a Raspberry Pi, then use the following command to install mosquitto, which is an MQTT
+ broker/server.
+
+ Simply run this command on your Raspbian configuration:
 
  sudo apt-get install mosquitto
 

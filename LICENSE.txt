@@ -1,0 +1,50 @@
+AGI-ESP8266:
+Copyright [2017] [Bryan Vandenbrink]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+[ License attribution ]
+ I used the following website to explore possible FOSS licensing concerns:
+  https://choosealicense.com/licenses/
+
+ I have taken the description for each license and abbreviated it here for
+ the sake of simplicity. I chose the Apache 2.0 License for AGI-ESP8266 as
+ it seemed the most reasonable.
+
+Adafruit Unified Sensor Library: Apache 2.0 License
+ A permissive license whose main conditions require preservation of copyright and license notices.
+ Contributors provide an express grant of patent rights. Licensed works, modifications, and larger
+ works may be distributed under different terms and without source code.
+  - Preservation of copyright and license notices
+  - Derivative work NOT required to be licensed under the same terms
+
+DHT Sensor Library: MIT License
+ A short and simple permissive license with conditions only requiring preservation of copyright
+ and license notices. Licensed works, modifications, and larger works may be distributed under
+ different terms and without source code.
+  - Preservation of copyright and license notices
+  - Derivative work NOT required to be licensed under the same terms
+
+TSL2561 Sensor Library: BSD License
+ A permissive license similar to the BSD 2-Clause License, but with a 3rd clause that prohibits
+ others from using the name of the project or its contributors to promote derived products without
+ written consent.
+  - Preservation of copyright and license notices
+  - Derivative work NOT required to be licensed under the same terms
+
+PubSub MQTT Client Library: MIT License
+ A short and simple permissive license with conditions only requiring preservation of copyright
+ and license notices. Licensed works, modifications, and larger works may be distributed under
+ different terms and without source code.
+  - Preservation of copyright and license notices
+  - Derivative work NOT required to be licensed under the same terms
