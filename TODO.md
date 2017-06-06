@@ -1,6 +1,6 @@
 Project: AGI-ESP8266
 
-Completed:
+Complete:
  - Test WiFi Connectivity
  - Test DHT22 Temp/Humidity
  - Test TSL2561
@@ -11,9 +11,9 @@ Completed:
 
 Incomplete:
  - Test Soil Capacitance Measurement design
- - Design eagle schematic
- - Order a trial run of PCBs online
+  > DFRobot Analog Soil Moisture Sensor (Corrosion resistant)
+  > Generic DIY capacitive soil moisture sensor
+ - Design eagle schematic for agi-esp8266
+ - Order trial run of protoype PCBs online
  - Assemble the prototype evaluation candidates
-
-
-
+  > Ship for evaluation alongside window garden kit
