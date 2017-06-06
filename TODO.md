@@ -10,6 +10,12 @@ Complete:
  - Test DHT22, TSL2561 and DS18B20 over multiple sleep cycles long term
 
 Incomplete:
+ - Test the Homie-esp8266 framework
+  > Evaluate battery life efficiency
+   . Deep sleep functionality?
+   . Static WiFi settings to reduce 802.11 negotiation on wake from deep sleep
+  > MQTT Over the Air updates sent via a retrieved flag from MQTT broker
+  > Submit various sensor configurations to homie-esp8266 project
  - Test Soil Capacitance Measurement design
   > DFRobot Analog Soil Moisture Sensor (Corrosion resistant)
   > Generic DIY capacitive soil moisture sensor
