@@ -9,6 +9,11 @@
 
 # How do I use this?
 
+ The src sub-directory contains three versions at the moment:
+  nosleep - Install on an esp8266 to publish sensor data and host a web server on the esp8266 with the sensor values
+  sleep - Install on an esp8266 to utilize deep sleep function to conserve battery power
+  sleep-ds18b20 - Install on esp8266 to utilize deep sleep and connect to a ds18b20 i2c temperature sensor
+
  These are general instructions for if you have an FTDI cable. I don't, so I used my Raspberry Pi to set the
  ESP8266 Huzzah up. Skip to the bottom for instructions on doing that.
 
