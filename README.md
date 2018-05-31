@@ -1,14 +1,23 @@
+# What is agi-esp8266?
+
+  agi-esp8266 is intended to provide a simple, straight forward way for end users to measure environmental data
+ affecting their plants. It's the instrumentation part of a planned system for growing plants on window sills
+ and in greenhouses and cold frames.
+
+  The software is currently fairly barebones, but some functionality is currently working. You can setup a simple
+ MQTT broker on a Linux system which logs available data from several sensors being published to it.
+
 # How do I use this?
 
- These are general instructions for if you have an FTDI cable. I don't, so I used my
- Raspberry Pi to set the ESP8266 Huzzah up. See the bottom for instructions on that.
+ These are general instructions for if you have an FTDI cable. I don't, so I used my Raspberry Pi to set the
+ ESP8266 Huzzah up. Skip to the bottom for instructions on doing that.
 
-# Setup with an FTDI USB cable (esp8266 connected directly to PC)
+# Simple setup with an FTDI USB cable (esp8266 connected directly to PC)
 
  1. First, install the Arduino IDE and configure it to use the ESP8266 repository.
 
  Since other documentation explains how to do this better, here is a link to the
- official esp8266 arduino repository.
+ official esp8266 arduino repository:
 
  https://github.com/esp8266/Arduino
 
@@ -30,41 +39,34 @@
  serial connection from my Raspberry Pi and the esptool.py utility.
 
  However, if you are connected directly to your ESP8266 Huzzah (or other ESP8266) through
- and FTDI adapter all you need is to select your board and upload as normal.
+ an FTDI adapter all you need is to select your board and your port and upload as you normally
+ would with an Arduino board.
 
  The exact connections for connecting to your esp8266 microcontroller will vary with which
- version of the esp8266 you've picked up.
+ version of the esp8266 you've picked up. I have an Adafruit Huzzah and a Wemos D1 Mini, so most
+ of my instructions will be directed at those.
 
 # Alright, I have the Arduino IDE and libraries setup, what next?
 
- If you're able to upload new firmware using the ArduinoOTA library without issue you can
- now proceed to the next step:
+ The current code, which is in the src/ directory has several versions of the code I've written and pieced together
+ from material available online.
 
- Open agi-esp8266.ino in your Arduino IDE and configure it. You'll need to setup the WiFi
- SSID, wifi password and the ArduinoOTA upload password.
+ There are currently versions which support ArduinoOTA which is a library to remotely flash the firmware on an esp8266
+ over an existing wifi network.
 
- Next, upload the agi-esp8266 sketch to your ESP8266. Make sure you have the correct board
- selected.
+ Pick your version, configure the code, compile and upload it using whichever method you've chosen.
 
- You'll know it's running if the serial monitor in the Arduino IDE indicates it successfully
- connected to your wireless network. (You should have configured this in the sourcecode earlier.)
+ Note: If you're using ArduinoOTA, you'll need to do a bit of reading on how to use it. The "nosleep" code has variables
+ which you will need to configure to get that working.
 
- Open up the IP address the ESP8266 reports in serial monitor inside your web browser.
-
- I'm assuming that you have the DHT22 output connected to pin 13 on the ESP8266. Although
- you can change this to whatever you'd like in the sketch code.
-
- Additionally, the TSl2561 should be connected to the i2c SCL/SDA pins on your ESP8266. In my
- case they were pins 4 and 5.
-
- Next up, we'll setup the logging part with MQTT.
+ Next up, we'll setup simple logging with MQTT.
 
 # Logging with mosquitto and some basic command line stuff
 
  If you have a Raspberry Pi, then use the following command to install mosquitto, which is an MQTT
  broker/server.
 
- Simply run this command on your Raspbian configuration:
+ Simply run this command on your Raspbian or Ubuntu configuration:
 
  sudo apt-get install mosquitto
 
@@ -72,7 +74,7 @@
 
  Finally, run sudo mosquitto -v to run mosquitto with verbose output.
 
- I've yet to write any software to subscribe and parse data so I'm using these commands for logging:
+ I've yet to write any software to subscribe and parse data so I'm using these commands for logging in a terminal to flat text files:
  
  mosquitto_sub -v -t sensor/temperature | xargs -d$'\n' -L1 sh -c 'date "+%D %T.%3N $0"' > temperature &
 
@@ -83,8 +85,8 @@
  They subscribe to "sensor/<sensor>" events being sent to the MQTT server. They output the events to
  the temperature, humidity and luminosity files with an appended timestamp.
 
- Example output looks like these:
- 10/04/16 23:31:40.645 sensor/temperature 20.80
+ Example output in the files looks like this:
+ 10/04/16 23:31:40.645 sensor/temperature 20.80 <--- 20 degree's celsius
  10/04/16 23:31:50.646 sensor/temperature 20.70
  10/04/16 23:32:00.650 sensor/temperature 20.70
  10/04/16 23:32:10.648 sensor/temperature 20.80
@@ -93,6 +95,7 @@
  That's it! [More to come]
  
 # How do I use a Raspberry Pi to do this?
+
  Here are the steps I took to get that working:
   - Install Arduino IDE, install ESP8266 library.
   - Configured a sketch from the ESP8266 library called "ArduinoOTA/BasicOTA"
